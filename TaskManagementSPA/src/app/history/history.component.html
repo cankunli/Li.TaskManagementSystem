@@ -1,0 +1,84 @@
+<h2 style="text-align: center;" class="py-3" >Tasks History</h2>
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#Task Id</th>
+      <th scope="col">#User Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">DueDate</th>
+      <th scope="col">Completed</th>
+      <th scope="col">Remarks</th>
+      <th scope="col">Not Finish?</th>
+      <th scope="col">Delete?</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor ="let un of histories" >
+        <td>{{ un.id }}</td>
+        <td >{{ un.userId }}</td>
+        <td >{{ un.title }}</td>
+        <td>{{ un.description }}</td>
+        <td>{{ un.dueDate}}</td>
+        <td>{{ un.completed}}</td>
+        <td>{{ un.remarks}}</td>
+        <td><button (click)="revertHistory(un.id)">Revert</button></td>
+        <td><button (click)="deleteTaskHisotryById(un.id)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+
+  
+
+  <!-- <div class="container-fluid py-2">
+    <div class="row">
+      <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Create/Update Task History
+        </button>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <form class="row px-5"  [formGroup]="createForm" (ngSubmit)="onSubmit()" >
+    
+        <div class="col">
+          <label>Id (0 for creating new task) </label>
+            <input type="id" class="form-control" formControlName="id" placeholder="Id">
+        </div>
+    
+        <div class="col">
+          <label>User ID </label>
+          <input type="id" class="form-control" formControlName="userid" placeholder="User ID">
+        </div>
+    
+        <div class="col">
+          <label>Title </label>
+          <input type="text" class="form-control" formControlName="title" placeholder="Title">
+        </div>
+    
+        <div class="col">
+            <label>Description </label>
+            <input type="text" class="form-control" formControlName="description" placeholder="Description">
+          </div>
+
+        <div class="col">
+          <label>DueDate </label>
+            <input type="date" class="form-control" formControlName="duedate" placeholder="DueDate">
+        </div>
+
+        <div class="col">
+            <label>Completed </label>
+              <input type="date" class="form-control" formControlName="completed" placeholder="CompleteDate">
+          </div>
+
+          <div class="col">
+            <label>Remarks </label>
+              <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks">
+          </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </div>
+  </div> -->

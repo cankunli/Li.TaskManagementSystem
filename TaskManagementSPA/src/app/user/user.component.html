@@ -1,0 +1,134 @@
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#Id</th>
+      <th scope="col">Email</th>
+      <!-- <th scope="col">Employee Password</th> -->
+      <th scope="col">Full Name</th>
+      <th scope="col">Mobie Number</th>
+      <th scope="col">Delete?</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor ="let un of users" >
+        <td >{{ un.id }}</td>
+        <td >{{ un.email }}</td>
+        <td>
+          <!-- <ng-template #popContent class="container"><app-interactions [ints]="ints"></app-interactions></ng-template>
+          <ng-template #popTitle><b>Interactions</b></ng-template>
+          <button type="button" class="btn btn-info" placement="right" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+            {{ employees.name }}
+          </button> -->
+          
+          <a [routerLink]="['/Task/user', un.id]">
+            <button class="btn btn-dark" >{{ un.fullname }}</button> 
+          </a>
+            <!-- <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                <ngb-panel>
+                    <ng-template ngbPanelTitle >
+                      <button class="btn btn-dark" (click)="getTaskByUserId(un.id)">{{ un.fullname }}</button> 
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                      Tasks
+                        <app-interactions [ints]="ints"></app-interactions>
+                    </ng-template>
+                  </ngb-panel>
+            </ngb-accordion> -->
+            
+        </td>
+        
+        
+        <!-- <td>
+            <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+            aria-controls="collapseExample">
+            Password
+            </button>
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedTable">
+                {{ un.password }}
+            </div>
+            
+        </td>  -->
+        <td>{{ un.mobileno}}</td>
+        <td><button (click)="deleteUserById(un.id)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- <div class="col-sm-3">
+    <div class="col">
+        <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Insert/Update
+        </button>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <form class="px-4 py-3" [formGroup]="createForm" (ngSubmit)="onSubmit()" >
+
+            <div class="form-group">
+                <label>Employee Id (Leave as 0 if creating) </label>
+                <input type="id" class="form-control" formControlName="id" placeholder="Id">
+            </div>
+
+            <div class="form-group">
+              <label>Employee Name </label>
+              <input type="name" class="form-control" formControlName="name" placeholder="Name">
+            </div>
+
+            <div class="form-group">
+              <label>Employee Password </label>
+              <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label>Designation </label>
+                <input type="description" class="form-control" formControlName="designation" placeholder="Designation">
+              </div>
+            
+            <button type="submit" class="btn btn-primary">Insert/Update</button>
+          </form>
+        </div>
+    </div>
+  </div> -->
+  
+
+  <div class="container-fluid py-2">
+    <div class="row">
+      <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Insert/Update
+        </button>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <form class="row px-5"  [formGroup]="createForm" (ngSubmit)="onSubmit()" >
+    
+        <div class="col">
+          <label>Id (0 for creating new user) </label>
+            <input type="id" class="form-control" formControlName="id" placeholder="Id">
+        </div>
+    
+        <div class="col">
+          <label>Email </label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Email">
+        </div>
+    
+        <div class="col">
+          <label>Password </label>
+          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        </div>
+    
+        <div class="col">
+            <label>Name </label>
+            <input type="text" class="form-control" formControlName="fullname" placeholder="Name">
+          </div>
+
+        <div class="col">
+          <label>Mobile No. </label>
+            <input type="tel" class="form-control" formControlName="mobileno" placeholder="Phone Number">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div *ngIf="invalidRegister" class="alert alert-danger">Email has taken. Try another.</div>
+      </form>
+    </div>
+  </div>
+  </div>

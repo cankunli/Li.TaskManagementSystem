@@ -1,0 +1,156 @@
+<h2 style="text-align: center;" class="py-3" >Current Tasks</h2>
+
+
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#Task Id</th>
+      <th scope="col">#User Id</th>
+      <!-- <th scope="col">Employee Password</th> -->
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">DueDate</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Remarks</th>
+      <th scope="col">Complete?</th>
+      <th scope="col">Delete?</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor ="let un of tasks" >
+        <td>{{ un.id }}</td>
+        <td >{{ un.userId }}</td>
+        <td >{{ un.title }}</td>
+        <td>
+          <!-- <ng-template #popContent class="container"><app-interactions [ints]="ints"></app-interactions></ng-template>
+          <ng-template #popTitle><b>Interactions</b></ng-template>
+          <button type="button" class="btn btn-info" placement="right" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+            {{ employees.name }}
+          </button> -->
+          
+          {{ un.description }}
+            <!-- <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                <ngb-panel>
+                    <ng-template ngbPanelTitle >
+                      <button class="btn btn-dark" (click)="getTaskByUserId(un.id)">{{ un.fullname }}</button> 
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                      Tasks
+                        <app-interactions [ints]="ints"></app-interactions>
+                    </ng-template>
+                  </ngb-panel>
+            </ngb-accordion> -->
+            
+        </td>
+        
+        
+        <!-- <td>
+            <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+            aria-controls="collapseExample">
+            Password
+            </button>
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsedTable">
+                {{ un.password }}
+            </div>
+            
+        </td>  -->
+        <td>{{ un.dueDate}}</td>
+        <td>{{ un.priority}}</td>
+        <td>{{ un.remarks}}</td>
+        <td><button (click)="completeTask(un.id)">Complete</button></td>
+        <td><button (click)="deleteTaskById(un.id)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- <div class="col-sm-3">
+    <div class="col">
+        <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Insert/Update
+        </button>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+          <form class="px-4 py-3" [formGroup]="createForm" (ngSubmit)="onSubmit()" >
+
+            <div class="form-group">
+                <label>Employee Id (Leave as 0 if creating) </label>
+                <input type="id" class="form-control" formControlName="id" placeholder="Id">
+            </div>
+
+            <div class="form-group">
+              <label>Employee Name </label>
+              <input type="name" class="form-control" formControlName="name" placeholder="Name">
+            </div>
+
+            <div class="form-group">
+              <label>Employee Password </label>
+              <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label>Designation </label>
+                <input type="description" class="form-control" formControlName="designation" placeholder="Designation">
+              </div>
+            
+            <button type="submit" class="btn btn-primary">Insert/Update</button>
+          </form>
+        </div>
+    </div>
+  </div> -->
+  
+
+  <div class="container-fluid py-2">
+    <div class="row">
+      <button type="button" class="btn btn-outline-primary" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Create/Update Current Task
+        </button>
+        <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <form class="row px-5"  [formGroup]="createForm" (ngSubmit)="onSubmit()" >
+    
+        <div class="col">
+          <label>Task Id (0 for create) </label>
+            <input type="id" class="form-control" formControlName="id" placeholder="Id">
+        </div>
+    
+        <div class="col">
+          <label>User ID </label>
+          <input type="id" class="form-control" formControlName="userid" placeholder="User ID">
+        </div>
+    
+        <div class="col">
+          <label>Title </label>
+          <input type="text" class="form-control" formControlName="title" placeholder="Title">
+        </div>
+    
+        <div class="col">
+            <label>Description </label>
+            <input type="text" class="form-control" formControlName="description" placeholder="Description">
+          </div>
+
+        <div class="col">
+          <label>DueDate </label>
+            <input type="date" class="form-control" formControlName="duedate" placeholder="DueDate">
+        </div>
+
+        <div class="col">
+            <label>Priority(Single Character) </label>
+              <input type="text" class="form-control" formControlName="priority" placeholder="E, U">
+          </div>
+
+          <div class="col">
+            <label>Remarks </label>
+              <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks">
+          </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <div *ngIf="invalidRegister" class="alert alert-danger">Email has taken. Try another.</div> -->
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <app-history></app-history>
